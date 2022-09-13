@@ -1,1 +1,1 @@
-web: gunicorn BillboardAPI:app
+web: gunicorn app:app
