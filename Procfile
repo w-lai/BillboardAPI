@@ -1,1 +1,1 @@
-Web: gunicorn app:app --log-file=-
+gunicorn -b :5000 --access-logfile - --error-logfile - build:app
