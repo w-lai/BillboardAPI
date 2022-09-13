@@ -1,1 +1,1 @@
-web: gunicorn --BillboardAPI:app.py
+web: gunicorn BillboardAPI:app
