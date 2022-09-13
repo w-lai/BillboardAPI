@@ -32,11 +32,12 @@ api.add_resource(SongList, '/songs/<string:songnumber>')
 
 def main():
   # set up the selenium parser to use chrome
-  chrome_options = Options()
+  chrome_options = webdriver.ChromeOptions()
   chrome_options.add_argument("--headless")
   chrome_options.add_argument('--no-sandbox')
   chrome_options.add_argument('--disable-dev-shm-usage')
-  driver = webdriver.Chrome(options=chrome_options)
+  chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+  driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
   # access the billboard site dynamically
   driver.get("https://www.billboard.com/charts/hot-100/")
   # optain and parse the lines of the table
