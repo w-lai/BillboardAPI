@@ -3,6 +3,7 @@ from flask_restful import Resource, Api, reqparse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 import csv
 import os
 
@@ -38,7 +39,8 @@ def main():
   chrome_options.add_argument('--no-sandbox')
   chrome_options.add_argument('--disable-dev-shm-usage')
   chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-  driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+  s = Service(os.environ.get("CHROMEDRIVER_PATH")
+  driver = webdriver.Chrome(service=s, options=chrome_options)
   # access the billboard site dynamically
   driver.get("https://www.billboard.com/charts/hot-100/")
   # optain and parse the lines of the table
