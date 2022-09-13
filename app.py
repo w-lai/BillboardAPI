@@ -33,7 +33,7 @@ api.add_resource(SongList, '/songs/<string:songnumber>')
 
 def main():
   # set up the selenium parser to use chrome
-  chrome_options = webdriver.Options()
+  chrome_options = Options()
   chrome_options.add_argument("--headless")
   chrome_options.add_argument('--no-sandbox')
   chrome_options.add_argument('--disable-dev-shm-usage')
